@@ -1,0 +1,8 @@
+>Moreno_12
+GGAAATTT
+>Moreno_13
+AGGAAAG
+>Moreno_14
+CGGGGAAA
+>Moreno_15
+CGAAAA
