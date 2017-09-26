@@ -14,14 +14,14 @@ def read_file(filename):
 		data = file.readlines()
 	return data
 
-if __name__ == '__main__':	
+if __name__ == '__main__':
 	k = 5
 	text = "CAATCCAAC"
 	if len(sys.argv) >= 2:
-		 k, text = read_file(sys.argv[1])		 		 		 		 
+		 k, text = read_file(sys.argv[1])
 
-	with open('output/answer_11.txt','w') as answer:	
-		print(*kmer(int(k), text).values(), sep='\n', end='\n', file=answer)	
+	with open('output/answer_11.txt','w') as answer:
+		print(*kmer(int(k), text).values(), sep='\n', end='\n', file=answer)
 		print('Output written to %s' % answer.name)
 
 	# expected = read_file('output/expected_11.txt')
@@ -34,5 +34,5 @@ if __name__ == '__main__':
 	# 		has_all = False
 	# 		break
 	# print("Elements are in output")
-	# print(has_all)	
-	
+	# print(has_all)
+
