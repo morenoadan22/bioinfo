@@ -27,5 +27,5 @@ def read_file(filename):
 def read_file_lines(filename):
     data = ''
     with open(filename, 'r') as file:
-        data = file.read()
+        data = file.readlines()
     return data

@@ -3,10 +3,10 @@ import sys
 
 def parse_fasta(target):
     data = []
-    current_data = None
+    current_data = ''
     for line in [l.strip() for l in target.splitlines()]:
         if line.startswith('>'):
-            if current_data != None:
+            if current_data is not None:
                 data.append(current_data)
             current_data = ''
         else:
