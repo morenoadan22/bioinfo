@@ -2,12 +2,20 @@ import sys
 import dna.utils as utils
 
 
-def hamming_distance(s1, s2):
+def hamming_distances(s1, s2):
     hd = 0
     for i, j in zip(s1, s2):
         if i != j:
             hd += 1
     return hd
+
+
+def hamming_distance(seq1, seq2):
+    mutations = 0
+    for i in range(len(seq1)):
+        if seq1[i] != seq2[i]:
+            mutations += 1
+    return mutations
 
 
 if __name__ == '__main__':
