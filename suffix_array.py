@@ -9,7 +9,7 @@ def suffix_array(text):
 if __name__ == '__main__':
     s = 'AACGATAGCGGTAGA$'
     if len(sys.argv) >= 2:
-        s = utils.read_file_lines(sys.argv[1])[0]
+        s = utils.read_file_lines(sys.argv[1])[0].strip()
 
     print(', '.join(suffix_array(s)))
 

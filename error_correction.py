@@ -7,7 +7,9 @@ import point_mutations as pm
 def split_reads(seq, new_seq):
     valid = []
     invalid = []
+    # loop through the reverse complement list
     for s in new_seq:
+        # for each one, check if the current
         if new_seq.count(s) >= 2:
             valid.append(s)
         elif s in seq:

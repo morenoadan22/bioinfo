@@ -1,24 +1,31 @@
 import sys
 import dna.utils as utils
-from dna.node import Node
-from dna.de_bruijn_graph import DeBruijnGraph
-from kmers import kmer
+import reverse_complement as rvc
 
 
-def draw_graph(sequences):
-    graph = DeBruijnGraph()
-    for read in sequences:
-        # split into kmers
-        for k in kmer(3, read).values():
-            # create nodes with edges
-            graph.append(Node(k))
-    return graph
+def edge(elmmt, k):
+    return '(' + elmmt[0:k - 1] + ',' + elmmt[1:k] + ')'
+
+
+def de_bruijn(sequences):
+    edge_nodes = set()
+    for s in sequences:
+        edge_nodes.add(s)
+        edge_nodes.add(rvc.complementary_nucleotide(s))
+
+    k = len(sequences[0])
+    edge_nodes = [edge(element, k) for element in edge_nodes]
+
+    return edge_nodes
 
 
 if __name__ == '__main__':
-    sequences = ['GGAAATTT', 'AGGAAACG', 'CGGGGAAA', 'CGAAAA']
+    sequences = ['TGAT', 'CATG', 'TCAT', 'ATGC', 'CATC', 'CATC']
     if len(sys.argv) >= 2:
         data = utils.read_file(sys.argv[1])
-        sequences = utils.read_fasta(data)
+        sequences = data.splitlines()
 
-    print(draw_graph(sequences))
+    graph = de_bruijn(sequences)
+
+    with open('output/answer_13.txt', 'w') as answer:
+        print('\n'.join(graph), file=answer)
